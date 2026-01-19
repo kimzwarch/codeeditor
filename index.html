@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Patch Helper</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Code Patch Helper</h1>
+        <p>
+          Upload your original code and the suggested changes (using <code>-</code> for
+          deletions and <code>+</code> for additions). Apply the patch to get the full
+          updated code.
+        </p>
+      </header>
+
+      <section class="grid">
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Original Code</h2>
+            <label class="file-upload">
+              <input id="original-file" type="file" accept=".txt,.html,.js,.gs,.css,.json,.md" />
+              <span>Upload file</span>
+            </label>
+          </div>
+          <textarea id="original-input" placeholder="Paste your original code here..."></textarea>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Suggested Changes</h2>
+            <label class="file-upload">
+              <input id="changes-file" type="file" accept=".txt,.diff,.patch,.md" />
+              <span>Upload changes</span>
+            </label>
+          </div>
+          <textarea
+            id="changes-input"
+            placeholder="Example:\n- const oldValue = 1;\n+ const newValue = 2;"
+          ></textarea>
+        </div>
+      </section>
+
+      <section class="actions">
+        <button id="apply-btn" class="primary">Apply Changes</button>
+        <button id="copy-btn" class="ghost" disabled>Copy Updated Code</button>
+      </section>
+
+      <section class="panel output">
+        <div class="panel-header">
+          <h2>Updated Code</h2>
+          <span id="status" class="status">Waiting for input...</span>
+        </div>
+        <textarea id="output" readonly placeholder="Your updated code will appear here..."></textarea>
+      </section>
+
+      <section class="panel tips">
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            The patch helper applies changes line-by-line. For best results, include the
+            exact lines you want to remove with a leading <code>-</code>.
+          </li>
+          <li>
+            Use <code>+</code> lines to add new content at the current position in the
+            patch.
+          </li>
+          <li>
+            Lines without a prefix are treated as comments and ignored.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
