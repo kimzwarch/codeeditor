@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Strict Patch Applier</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Strict Patch Applier</h1>
+      <p class="sub">
+        Applies unified diff (<code>@@</code> hunks) to an old file and outputs the new file.
+        No guessing. No “helpful” edits.
+      </p>
+    </div>
+
+    <label class="switch">
+      <input id="strictMode" type="checkbox" checked />
+      <span>Strict mode (STOP on mismatch)</span>
+    </label>
+  </header>
+
+  <main class="grid">
+    <!-- JOB 1 -->
+    <section class="card">
+      <h2>Job A — Code.gs</h2>
+
+      <div class="row">
+        <div class="field">
+          <label>Old file (baseline)</label>
+          <input id="oldA" type="file" accept=".txt,.gs,.js,.html,.css" />
+          <div class="hint">Upload: <code>codegs old.txt</code></div>
+        </div>
+
+        <div class="field">
+          <label>Changes file (unified diff)</label>
+          <input id="diffA" type="file" accept=".txt,.diff,.patch" />
+          <div class="hint">Upload: <code>change for code (Code.gs).txt</code></div>
+        </div>
+      </div>
+
+      <button id="applyA" class="btn">Apply Patch → Download 1-codegs.txt</button>
+
+      <div class="result">
+        <a id="downloadA" class="download disabled" href="#" download="1-codegs.txt">Download output</a>
+        <pre id="logA" class="log"></pre>
+      </div>
+    </section>
+
+    <!-- JOB 2 -->
+    <section class="card">
+      <h2>Job B — qs_input.html</h2>
+
+      <div class="row">
+        <div class="field">
+          <label>Old file (baseline)</label>
+          <input id="oldB" type="file" accept=".txt,.gs,.js,.html,.css" />
+          <div class="hint">Upload: <code>qsinput old.txt</code></div>
+        </div>
+
+        <div class="field">
+          <label>Changes file (unified diff)</label>
+          <input id="diffB" type="file" accept=".txt,.diff,.patch" />
+          <div class="hint">Upload: <code>change for code (qs_input).txt</code></div>
+        </div>
+      </div>
+
+      <button id="applyB" class="btn">Apply Patch → Download 1-qsinput.txt</button>
+
+      <div class="result">
+        <a id="downloadB" class="download disabled" href="#" download="1-qsinput.txt">Download output</a>
+        <pre id="logB" class="log"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      Runs fully in-browser. Your files are not uploaded anywhere.
+    </p>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
